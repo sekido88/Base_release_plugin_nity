@@ -1,0 +1,6 @@
+{
+  "name": "MyPlugin",
+  "rootNamespace": "MyCompany.MyPlugin",
+  "references": [],
+  "autoReferenced": true
+}
