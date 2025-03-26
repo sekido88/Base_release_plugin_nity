@@ -1,4 +1,3 @@
-name: CI
 on:
   push:
     branches:
@@ -8,16 +7,18 @@ jobs:
   release:
     name: Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Quan trọng! Cấp quyền ghi
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3  # Cập nhật từ v2 lên v3
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3  # Đảm bảo Node.js có sẵn
+        uses: actions/setup-node@v3
         with:
-          node-version: 18  # Dùng phiên bản mới
+          node-version: 18
 
       - name: Install Dependencies
         run: npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git
@@ -25,4 +26,4 @@ jobs:
       - name: Release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  # Sử dụng token để có quyền push
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Token mặc định
