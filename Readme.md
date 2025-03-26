@@ -1,7 +1,10 @@
-Base Auto Release Plugin Unity, using semantic-release, Actions git
+Base Auto Release Plugin Unity, using semantic-release, actions git
 
 ## Cách sử dụng
-
+- Tạo biến môi trường cho NPM trên NPM tạo access token
+- Vô github responsity -> setting -> secret -> new -> NPM_TOKEN
+- Clone Project về là sử dụng được
+  
 1. Push code lên nhánh master
 2. Sử dụng cấu trúc commit message tiêu chuẩn của semantic-release:
    - `fix: ...` - Sửa lỗi (tạo phiên bản patch)
