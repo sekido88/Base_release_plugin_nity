@@ -8,5 +8,6 @@ public class TestComponent : MonoBehaviour
     Debug.Log("Test class is dep trai ok");
     // bug 1
     // bug 2
+    // 1234
   }
 }
