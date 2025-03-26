@@ -9,6 +9,7 @@ public enum  Direction {
 }
 public static class CommonUtils
 {
+    // test su xinh gai
     public static Dictionary<Direction, Vector3> directionToVector3 = new Dictionary<Direction, Vector3>() {
         {Direction.Up, Vector3.up},
         {Direction.Right , Vector3.right},
