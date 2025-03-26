@@ -2,21 +2,27 @@ name: CI
 on:
   push:
     branches:
-    - master
+      - master
+
 jobs:
   release:
-    name: release
+    name: Release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Release
-      uses: cycjimmy/semantic-release-action@v2
-      with:
-        extra_plugins: |
-          @semantic-release/changelog
-          @semantic-release/git
-        branch: master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # Cập nhật từ v2 lên v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3  # Đảm bảo Node.js có sẵn
+        with:
+          node-version: 18  # Dùng phiên bản mới
+
+      - name: Install Dependencies
+        run: npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git
+
+      - name: Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Sử dụng token để có quyền push
