@@ -9,5 +9,7 @@ public class TestComponent : MonoBehaviour
     // bug 1
     // bug 2
     // 1234
+    // 1234
+
   }
 }
