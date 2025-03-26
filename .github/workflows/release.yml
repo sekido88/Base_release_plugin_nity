@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+
 jobs:
   release:
     name: release
@@ -11,15 +12,21 @@ jobs:
       issues: write
     runs-on: ubuntu-latest
     steps:
-      - name : Checkout
+      - name: Checkout
         uses: actions/checkout@v4
+
       - name: Release
         uses: cycjimmy/semantic-release-action@v4
         with:
+          # Sử dụng tham số branches với định dạng JSON để hỗ trợ cấu hình phức tạp
+          branches: |
+            ["master"]
+          # Thêm các plugin bổ sung nếu cần thiết
           extra_plugins: |
             @semantic-release/changelog@6.0.0
             @semantic-release/git
-          branch: master
+          # Nếu cần cố định phiên bản của semantic-release, bạn có thể dùng:
+          # semantic_version: 19.0.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
