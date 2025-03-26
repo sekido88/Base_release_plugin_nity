@@ -25,4 +25,4 @@ jobs:
       - name: Release
         run: npx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Sử dụng token để có quyền push
+          GITHUB_TOKEN: ${{ secrets.PATH_TOKEN }}  # Sử dụng token để có quyền push
