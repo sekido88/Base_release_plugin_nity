@@ -6,5 +6,6 @@ public class TestComponent : MonoBehaviour
   private void Start() {
     Debug.Log(depTrai);
     Debug.Log("Test class is dep trai ok");
+    // bug 1
   }
 }
