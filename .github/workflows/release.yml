@@ -1,29 +1,24 @@
+name: CI
 on:
   push:
     branches:
-      - master
-
+    - master
 jobs:
   release:
-    name: Release
-    runs-on: ubuntu-latest
+    name: release
     permissions:
-      contents: write  # Quan trọng! Cấp quyền ghi
+      contents: write 
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install Dependencies
-        run: npm install --save-dev semantic-release @semantic-release/changelog @semantic-release/git
-
-      - name: Release
-        run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Token mặc định
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Release
+      uses: cycjimmy/semantic-release-action@v2
+      with:
+        extra_plugins: |
+          @semantic-release/changelog
+          @semantic-release/git
+        branch: master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
